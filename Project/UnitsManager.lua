@@ -13,6 +13,11 @@ function UnitsManager:AddUnit(unit)
     self.units[position] = unit
 end
 
+function UnitsManager:GetUnits()
+    return self.units
+    
+end
+
 function UnitsManager.GetUnitInfo(unit)
     print("+--------------------------+")
     print("|        UNIT INFO         |")
