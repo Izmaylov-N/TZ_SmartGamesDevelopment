@@ -3,9 +3,9 @@ local Archer = require("Units.Archer")
 local Warrior = require("Units.Warrior")
 local Tank = require("Units.Tank")
 
-local BattleManager = require("BattleManager")
-local UnitsManager = require("UnitsManager")
-local LogManager = require("LogManager")
+local BattleManager = require("Managers.BattleManager")
+local UnitsManager = require("Managers.UnitsManager")
+local LogManager = require("Managers.LogManager")
 
 local unitsManager = UnitsManager:NewUnitsManager()
 local logManager = LogManager:NewLogManager()
