@@ -1,4 +1,3 @@
-local Unit = require("units.Unit")
 local Mage = require("Units.mage")
 local Archer = require("Units.Archer")
 local Warrior = require("Units.Warrior")
@@ -6,8 +5,13 @@ local Tank = require("Units.Tank")
 
 local BattleManager = require("BattleManager")
 local UnitsManager = require("UnitsManager")
+local LogManager = require("LogManager")
 
-local unitsManager = UnitsManager:New()
+local unitsManager = UnitsManager:NewUnitsManager()
+local logManager = LogManager:NewLogManager()
+
+BattleManager.logManager = logManager
+Unit.logManager = logManager
 
 local warrior = Warrior:NewUnit("Warrior", 120, 25, 0.15, 2.0)
 local mage = Mage:NewUnit("Mage", 80, 35, 0.3, 2.5)
@@ -20,3 +24,4 @@ unitsManager:AddUnit(archer)
 unitsManager:AddUnit(tank)
 
 BattleManager:StartBattle(unitsManager:GetUnits())
+logManager:ShowAllMessage()

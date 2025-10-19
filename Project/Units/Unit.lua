@@ -10,7 +10,7 @@ function Unit:NewUnit(name, hp, damage, crit_chance,
         Crit_mult = crit_mult,
         IsDead = false
     }
-
+    
     setmetatable(unit, {__index = Unit})
     return unit
 end
@@ -19,9 +19,9 @@ function Unit:Attack(target)
     local damage = self.Damage
         if math.random() < self.Crit_chance then
         damage = math.floor(damage * self.Crit_mult)
-        print(self.Name .. " Critickal damage: " .. damage .. " damage!")
+        self.logManager:AddMessage(self.Name .. " Critickal damage: " .. damage .. " damage!")
     else
-        print(self.Name .. " attack " .. target.Name .. " on " .. damage .. " damage")
+        self.logManager:AddMessage(self.Name .. " attack " .. target.Name .. " on " .. damage .. " damage")
     end
 
     target:TakeDamage(damage)
@@ -33,9 +33,9 @@ function Unit:TakeDamage(damage)
     if self.HP <= 0 then
         self.HP = 0
         self.IsDead = true
-        print(self.Name .. " DEAD!")
+        self.logManager:AddMessage(self.Name .. " DEAD!")
     else
-        print(self.Name .. " take " .. damage .. " damage.HP: " .. self.HP)
+        self.logManager:AddMessage(self.Name .. " take " .. damage .. " damage. Current HP: " .. self.HP)
     end
 end
 
