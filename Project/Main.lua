@@ -1,8 +1,13 @@
 local Unit = require("unit")
+local BattleManager = require("battlemanager")
+local UnitsManager = require("unitsmanager")
 
-local warrior = Unit:new("Warrior", 120, 25, 0.15, 2.0)
-local mage = Unit:new("Mage", 80, 35, 0.3, 2.5)
+local unitsManager = UnitsManager:New()
 
-print("Created unit:")
-Unit.getUnitInfo(warrior)
-Unit.getUnitInfo(mage)
+local warrior = Unit:NewUnit("Warrior", 120, 25, 0.15, 2.0)
+local mage = Unit:NewUnit("Mage", 80, 35, 0.3, 2.5)
+
+unitsManager:AddUnit(warrior)
+unitsManager:AddUnit(mage)
+
+BattleManager:Fight(warrior, mage)
